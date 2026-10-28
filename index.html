@@ -8,6 +8,86 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,400&display=swap" rel="stylesheet">
 <style>
+
+/* ========================================================
+   FULL SCREEN & WIDESCREEN RESPONSIVE GRID LAYOUTS
+   ======================================================== */
+.dash-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .dash-hero-grid {
+    grid-template-columns: 380px 1fr;
+    align-items: stretch;
+  }
+  .dash-hero-grid .cefr-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.dash-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .dash-main-grid {
+    grid-template-columns: 1.65fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Widescreen Vocabulary Grid */
+.vocab-word-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .vocab-word-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .vocab-word-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Widescreen Goals 2-column layout */
+.goals-widescreen-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .goals-widescreen-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Ketinggian chart di layar lebar */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 290px;
+  margin-top: 0.75rem;
+}
+
 /* ========================================================
    CSS VARIABLES — TEMA WARNA HANGAT & RAMAH (KUNING PASTEL)
    ======================================================== */
@@ -157,15 +237,23 @@ p, li, td, th, label, input, select, textarea, .text-prose {
 .text-center { text-align: center; }
 
 /* Tata Letak Utama */
+
 .container {
-  max-width: 820px;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 1.25rem 1rem;
+  padding: 1.25rem 1.5rem;
 }
 
 @media (min-width: 768px) {
   .container {
-    padding: 2.25rem 1.5rem;
+    padding: 2rem 3rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    padding: 2.5rem 4.5rem;
   }
 }
 
@@ -201,14 +289,16 @@ p, li, td, th, label, input, select, textarea, .text-prose {
   .top-nav { display: block; }
 }
 
+
 .top-nav-inner {
-  max-width: 960px;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
-  height: 64px;
+  padding: 0 3rem;
+  height: 68px;
 }
 
 .logo-brand {
@@ -1097,16 +1187,23 @@ canvas#trendCanvas {
 }
 
 /* List Kata Vocab */
+
 .word-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 1.25rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-inner);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 0.12s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.word-item:last-child {
-  border-bottom: none;
+.word-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(237, 231, 150, 0.35);
 }
 
 .word-en {
@@ -1241,7 +1338,7 @@ canvas#trendCanvas {
      HALAMAN 1: DAFTAR & ONBOARDING
      ======================================================== -->
 <div class="page active" id="page-onboarding">
-  <div class="container" style="max-width: 520px;">
+  <div class="container" style="max-width: 860px;">
     
     <div class="text-center" style="margin-top: 1rem; margin-bottom: 1.5rem;">
       <div style="display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; background:var(--accent); border-radius:12px; margin-bottom:0.75rem; box-shadow:var(--shadow-card);">
@@ -1377,7 +1474,7 @@ canvas#trendCanvas {
      HALAMAN 2: PLACEMENT TEST ADAPTIF
      ======================================================== -->
 <div class="page" id="page-placement">
-  <div class="container" style="max-width: 620px;">
+  <div class="container" style="max-width: 960px;">
     
     <!-- Bagian Pengerjaan Tes -->
     <div id="placementTestView">
@@ -1462,84 +1559,116 @@ canvas#trendCanvas {
       </div>
     </div>
 
-    <!-- Kartu Level CEFR & Target Skor -->
-    <div class="cefr-card">
-      <div class="flex-between" style="align-items:flex-start;">
-        <span class="chip" style="background:rgba(255,255,255,0.7); color:var(--accent-text);" id="dashTargetChip">Target: TOEFL iBT 95</span>
-        <span class="chip chip-success">Status: Aktif</span>
-      </div>
-      <div class="cefr-level-badge mt-sm" id="dashCefrBadge">B2</div>
-      <div class="cefr-title" id="dashCefrTitle">Tingkat CEFR Menengah Atas</div>
-      <div class="cefr-desc">Kecakapan komunikatif mandiri untuk keperluan akademik universitas dan publikasi jurnal.</div>
-    </div>
-
-    <!-- Kartu 4 Statistik Utama -->
-    <div class="stats-grid mt-md">
-      <div class="stat-card">
-        <div class="stat-value" id="dashTotalXp">2.530</div>
-        <div class="stat-label">Total XP</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value"><span class="streak-flame">🔥</span> <span id="dashStreak">14</span></div>
-        <div class="stat-label">Hari Streak</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="dashTotalExercises">52</div>
-        <div class="stat-label">Sesi Latihan</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">9,4 j</div>
-        <div class="stat-label">Waktu Belajar</div>
-      </div>
-    </div>
-
-    <!-- Grafik Tren Skor 30 Hari Terakhir (Canvas Mandiri) -->
-    <div class="card mt-md">
-      <div class="flex-between">
-        <div>
-          <h3 class="section-title">Tren Skor Kecakapan 30 Hari Terakhir</h3>
-          <p class="text-xs text-secondary">Progres akumulasi dari kuis, penempatan, dan latihan harian.</p>
+    <!-- Grid Bagian Atas: CEFR Card + 4 Stat Cards Berdampingan di Layar Lebar -->
+    <div class="dash-hero-grid">
+      <!-- Kartu Level CEFR & Target Skor -->
+      <div class="cefr-card" style="margin-top:0;">
+        <div class="flex-between" style="align-items:flex-start;">
+          <span class="chip" style="background:#FFFFFF; border:1px solid var(--border-dark); color:var(--text-primary); font-weight:700;" id="dashTargetChip">Target: TOEFL iBT 95</span>
+          <span class="chip chip-success">Status: Aktif</span>
         </div>
-        <span class="chip chip-warning">Rata-rata: 78/100</span>
+        <div class="cefr-level-badge mt-sm" id="dashCefrBadge">B2</div>
+        <div class="cefr-title" id="dashCefrTitle">Tingkat CEFR Menengah Atas</div>
+        <div class="cefr-desc">Kecakapan komunikatif mandiri untuk keperluan akademik universitas dan publikasi jurnal.</div>
       </div>
 
-      <div class="chart-container">
-        <canvas id="trendCanvas" width="760" height="220" role="img" aria-label="Grafik tren skor 30 hari terakhir"></canvas>
-      </div>
-
-      <div class="flex-between mt-sm text-xs text-secondary">
-        <span>30 hari lalu (Skor: 58)</span>
-        <span>Hari ini (Skor: 84)</span>
+      <!-- Kartu 4 Statistik Utama -->
+      <div class="stats-grid" style="align-content:stretch;">
+        <div class="stat-card">
+          <div class="stat-value" id="dashTotalXp">2.530</div>
+          <div class="stat-label">Total XP</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value"><span class="streak-flame">🔥</span> <span id="dashStreak">14</span></div>
+          <div class="stat-label">Hari Streak</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="dashTotalExercises">52</div>
+          <div class="stat-label">Sesi Latihan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">9,4 j</div>
+          <div class="stat-label">Waktu Belajar</div>
+        </div>
       </div>
     </div>
 
-    <!-- Progress Target Mingguan -->
-    <div class="card mt-md">
-      <div class="flex-between">
-        <h3 class="section-title" style="margin-bottom:0;">Target Latihan Mingguan</h3>
-        <span class="chip chip-warning" id="dashWeeklyTargetBadge">5 / 7 hari</span>
-      </div>
-      <p class="text-sm text-secondary mt-sm">Komitmen belajar harian: selesaikan minimal 1 latihan setiap hari.</p>
-      <div class="progress-bar thick mt-sm">
-        <div class="progress-fill" id="dashWeeklyProgressBar" style="width: 71%;"></div>
-      </div>
-      <div class="flex-between mt-xs text-xs text-secondary">
-        <span>Sen, Sel, Rab, Kam, Jum ✓</span>
-        <span>2 hari tersisa untuk bonus +100 XP!</span>
-      </div>
-    </div>
+    <!-- Grid Bagian Bawah: Kolom Kiri (Grafik Lebar & Aksi Cepat) + Kolom Kanan (Target & Progres) -->
+    <div class="dash-main-grid">
+      <!-- Kolom Kiri -->
+      <div>
+        <!-- Grafik Tren Skor 30 Hari Terakhir -->
+        <div class="card" style="margin-top:0;">
+          <div class="flex-between">
+            <div>
+              <h3 class="section-title">Tren Skor Kecakapan 30 Hari Terakhir</h3>
+              <p class="text-xs text-secondary">Progres akumulasi dari kuis, penempatan, dan latihan harian.</p>
+            </div>
+            <span class="chip chip-warning">Rata-rata: 78/100</span>
+          </div>
 
-    <!-- Aksi Pintas Latihan -->
-    <div class="card mt-md">
-      <h3 class="section-title">Latihan Rekomendasi Hari Ini</h3>
-      <p class="text-sm text-secondary mb-md">Pilih modul yang ingin Anda asah sesuai kebutuhan evaluasi terkini.</p>
-      <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
-        <button class="btn btn-primary btn-sm" onclick="goToPage('quiz')">✎ Kuis Grammar & Vocab</button>
-        <button class="btn btn-secondary btn-sm" onclick="goToPage('dictation')">🔊 Audio Dictation B2</button>
-        <button class="btn btn-secondary btn-sm" onclick="goToPage('vocab')">📖 Kosakata Akademik</button>
-        <button class="btn btn-outline btn-sm" onclick="goToPage('goals')">🎯 Cek Target & Lencana</button>
+          <div class="chart-container">
+            <canvas id="trendCanvas" width="900" height="290" role="img" aria-label="Grafik tren skor 30 hari terakhir"></canvas>
+          </div>
+
+          <div class="flex-between mt-sm text-xs text-secondary">
+            <span>30 hari lalu (Skor: 58)</span>
+            <span>Hari ini (Skor: 84)</span>
+          </div>
+        </div>
+
+        <!-- Aksi Pintas Latihan -->
+        <div class="card mt-md">
+          <h3 class="section-title">Latihan Rekomendasi Hari Ini</h3>
+          <p class="text-sm text-secondary mb-md">Pilih modul yang ingin Anda asah sesuai kebutuhan evaluasi terkini.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+            <button class="btn btn-primary" onclick="goToPage('quiz')">✎ Kuis Grammar & Vocab</button>
+            <button class="btn btn-secondary" onclick="goToPage('dictation')">🔊 Audio Dictation B2</button>
+            <button class="btn btn-secondary" onclick="goToPage('vocab')">📖 Kosakata Akademik</button>
+            <button class="btn btn-outline" onclick="goToPage('goals')">🎯 Cek Target & Lencana</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom Kanan -->
+      <div>
+        <!-- Progress Target Mingguan -->
+        <div class="card" style="margin-top:0;">
+          <div class="flex-between">
+            <h3 class="section-title" style="margin-bottom:0;">Target Latihan Mingguan</h3>
+            <span class="chip chip-warning" id="dashWeeklyTargetBadge">5 / 7 hari</span>
+          </div>
+          <p class="text-sm text-secondary mt-sm">Komitmen belajar harian: selesaikan minimal 1 latihan setiap hari.</p>
+          <div class="progress-bar thick mt-sm">
+            <div class="progress-fill" id="dashWeeklyProgressBar" style="width: 71%;"></div>
+          </div>
+          <div class="flex-between mt-xs text-xs text-secondary">
+            <span>Sen, Sel, Rab, Kam, Jum ✓</span>
+            <span>2 hari tersisa untuk bonus +100 XP!</span>
+          </div>
+        </div>
+
+        <!-- Tantangan Cepat Aktif -->
+        <div class="card mt-md">
+          <h3 class="section-title">Tantangan Aktif</h3>
+          <div style="background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-inner); padding:0.9rem; margin-top:0.6rem;">
+            <div class="flex-between">
+              <div>
+                <strong style="font-size:0.9rem;">🏆 Marathon Kosakata B2</strong>
+                <p class="text-xs text-secondary">18 / 25 kata dipelajari</p>
+              </div>
+              <span class="chip chip-info">72%</span>
+            </div>
+            <div class="progress-bar mt-sm">
+              <div class="progress-fill" style="width: 72%;"></div>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-block mt-md" onclick="goToPage('goals')">Buka Halaman Target Lengkap →</button>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
   </div>
 </div>
@@ -1548,7 +1677,7 @@ canvas#trendCanvas {
      HALAMAN 4: KUIS LEVEL (GRAMMAR & VOCABULARY)
      ======================================================== -->
 <div class="page" id="page-quiz">
-  <div class="container" style="max-width: 620px;">
+  <div class="container" style="max-width: 960px;">
     
     <!-- Tampilan Ujian Kuis -->
     <div id="quizRunView">
@@ -1611,7 +1740,7 @@ canvas#trendCanvas {
      HALAMAN 5: AUDIO DICTATION B2
      ======================================================== -->
 <div class="page" id="page-dictation">
-  <div class="container" style="max-width: 620px;">
+  <div class="container" style="max-width: 960px;">
     
     <!-- Tampilan Input Dikte -->
     <div id="dictationInputView">
@@ -1809,7 +1938,6 @@ canvas#trendCanvas {
      ======================================================== -->
 <div class="page" id="page-goals">
   <div class="container">
-    
     <div class="flex-between mb-sm">
       <div>
         <h2>Target & Tantangan</h2>
@@ -1818,137 +1946,126 @@ canvas#trendCanvas {
       <span class="chip chip-warning">Peringkat #12</span>
     </div>
 
-    <!-- Pengaturan Target Mingguan -->
-    <div class="card">
-      <h3 class="section-title">Konfigurasi Target Mingguan</h3>
-      <p class="text-secondary text-sm">Sesuaikan jumlah hari latihan yang realistis sesuai jadwal perkuliahan Anda.</p>
+    <div class="goals-widescreen-grid mt-md">
+      <!-- Kolom 1: Konfigurasi Target & Tantangan -->
+      <div>
+        <div class="card" style="margin-top:0;">
+          <h3 class="section-title">Konfigurasi Target Mingguan</h3>
+          <p class="text-secondary text-sm">Sesuaikan jumlah hari latihan yang realistis sesuai jadwal perkuliahan Anda.</p>
 
-      <div class="form-group mt-md">
-        <label class="form-label" for="goalWeeklySelect">Frekuensi Latihan Per Minggu</label>
-        <select class="form-select" id="goalWeeklySelect" onchange="applyGoalChanges()">
-          <option value="3">3 hari per minggu (Ringan)</option>
-          <option value="5">5 hari per minggu (Moderat)</option>
-          <option value="7" selected>7 hari per minggu (Konsisten penuh)</option>
-          <option value="10">10 sesi per minggu (Akselerasi ujian)</option>
-        </select>
-      </div>
-
-      <div class="flex-between mt-sm">
-        <span class="text-sm text-secondary">Realisasi minggu berjalan:</span>
-        <strong class="text-sm" id="goalStatusLabel">5 / 7 hari tercapai</strong>
-      </div>
-      <div class="progress-bar thick mt-sm">
-        <div class="progress-fill" id="goalBarDisplay" style="width: 71%;"></div>
-      </div>
-      
-      <div class="flex-between mt-md">
-        <button class="btn btn-primary btn-sm" onclick="simulateCompleteDailySession()">
-          + Catat Sesi Latihan Hari Ini
-        </button>
-        <button class="btn btn-outline btn-sm" onclick="saveGoalSettings()">
-          Simpan Preferensi Target
-        </button>
-      </div>
-    </div>
-
-    <!-- Tantangan Akademik Aktif -->
-    <div class="card mt-md">
-      <h3 class="section-title">Tantangan Bulan Ini</h3>
-      
-      <div style="background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-inner); padding:0.9rem; margin-top:0.6rem;">
-        <div class="flex-between">
-          <div>
-            <strong>🏆 Marathon Kosakata Akademik B2</strong>
-            <p class="text-xs text-secondary">Pelajari minimal 25 kosakata tingkat B2 bulan ini.</p>
+          <div class="form-group mt-md">
+            <label class="form-label" for="goalWeeklySelect">Frekuensi Latihan Per Minggu</label>
+            <select class="form-select" id="goalWeeklySelect" onchange="applyGoalChanges()">
+              <option value="3">3 hari per minggu (Ringan)</option>
+              <option value="5">5 hari per minggu (Moderat)</option>
+              <option value="7" selected>7 hari per minggu (Konsisten penuh)</option>
+              <option value="10">10 sesi per minggu (Akselerasi ujian)</option>
+            </select>
           </div>
-          <span class="chip chip-info">18 / 25</span>
-        </div>
-        <div class="progress-bar mt-sm">
-          <div class="progress-fill" style="width: 72%;"></div>
-        </div>
-      </div>
 
-      <div style="background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-inner); padding:0.9rem; margin-top:0.6rem;">
-        <div class="flex-between">
-          <div>
-            <strong>🔊 Master Dikte Listening</strong>
-            <p class="text-xs text-secondary">Raih nilai akurasi dikte ≥ 85 pada 3 sesi berurutan.</p>
+          <div class="flex-between mt-sm">
+            <span class="text-sm text-secondary">Realisasi minggu berjalan:</span>
+            <strong class="text-sm" id="goalStatusLabel">5 / 7 hari tercapai</strong>
           </div>
-          <span class="chip chip-success">Tercapai! (3/3)</span>
+          <div class="progress-bar thick mt-sm">
+            <div class="progress-fill" id="goalBarDisplay" style="width: 71%;"></div>
+          </div>
+          
+          <div class="flex-between mt-md">
+            <button class="btn btn-primary btn-sm" onclick="simulateCompleteDailySession()">
+              + Catat Sesi Latihan Hari Ini
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="saveGoalSettings()">
+              Simpan Preferensi Target
+            </button>
+          </div>
         </div>
-        <div class="progress-bar mt-sm">
-          <div class="progress-fill success" style="width: 100%;"></div>
+
+        <div class="card mt-md">
+          <h3 class="section-title">Tantangan Bulan Ini</h3>
+          
+          <div style="background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-inner); padding:0.9rem; margin-top:0.6rem;">
+            <div class="flex-between">
+              <div>
+                <strong>🏆 Marathon Kosakata Akademik B2</strong>
+                <p class="text-xs text-secondary">Pelajari minimal 25 kosakata tingkat B2 bulan ini.</p>
+              </div>
+              <span class="chip chip-info">18 / 25</span>
+            </div>
+            <div class="progress-bar mt-sm">
+              <div class="progress-fill" style="width: 72%;"></div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-inner); padding:0.9rem; margin-top:0.6rem;">
+            <div class="flex-between">
+              <div>
+                <strong>🔊 Master Dikte Listening</strong>
+                <p class="text-xs text-secondary">Raih nilai akurasi dikte ≥ 85 pada 3 sesi berurutan.</p>
+              </div>
+              <span class="chip chip-success">Tercapai! (3/3)</span>
+            </div>
+            <div class="progress-bar mt-sm">
+              <div class="progress-fill success" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom 2: Koleksi Lencana -->
+      <div>
+        <div class="card" style="margin-top:0;">
+          <div class="flex-between mb-sm">
+            <h3 class="section-title" style="margin-bottom:0;">Koleksi Lencana Penghargaan</h3>
+            <span class="text-xs text-secondary">4 dari 8 Lencana Terbuka</span>
+          </div>
+          <p class="text-xs text-secondary mb-md">Lencana yang masih terkunci tampil memudar hingga syarat pencapaian terpenuhi.</p>
+
+          <div class="badge-grid" style="grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));">
+            <div class="badge-item">
+              <div class="badge-icon">🔥</div>
+              <div class="badge-label">Streak 7 Hari</div>
+              <div class="badge-sub">Konsisten</div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-icon">📝</div>
+              <div class="badge-label">Grammar Master</div>
+              <div class="badge-sub">10 Kuis Selesai</div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-icon">🎯</div>
+              <div class="badge-label">Akurasi 100%</div>
+              <div class="badge-sub">Skor Sempurna</div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-icon">🔊</div>
+              <div class="badge-label">Telinga Emas</div>
+              <div class="badge-sub">Dikte ≥ 85</div>
+            </div>
+            <div class="badge-item locked" title="Kunci: Belajar 30 hari tanpa putus">
+              <div class="badge-icon">⚡</div>
+              <div class="badge-label">Streak 30 Hari</div>
+              <div class="badge-sub">Terkunci 🔒</div>
+            </div>
+            <div class="badge-item locked" title="Kunci: Kumpulkan 5.000 XP total">
+              <div class="badge-icon">💎</div>
+              <div class="badge-label">5.000 XP Club</div>
+              <div class="badge-sub">Terkunci 🔒</div>
+            </div>
+            <div class="badge-item locked" title="Kunci: Masuk 5 besar leaderboard mingguan">
+              <div class="badge-icon">🏅</div>
+              <div class="badge-label">Top 5 Kampus</div>
+              <div class="badge-sub">Terkunci 🔒</div>
+            </div>
+            <div class="badge-item locked" title="Kunci: Capai Level C1 pada tes penempatan">
+              <div class="badge-icon">🎓</div>
+              <div class="badge-label">Sertifikasi C1</div>
+              <div class="badge-sub">Terkunci 🔒</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Koleksi Lencana (Badge Collection) -->
-    <div class="card mt-md">
-      <div class="flex-between mb-sm">
-        <h3 class="section-title" style="margin-bottom:0;">Koleksi Lencana Penghargaan</h3>
-        <span class="text-xs text-secondary">4 dari 8 Lencana Terbuka</span>
-      </div>
-      <p class="text-xs text-secondary mb-md">Lencana yang masih terkunci tampil memudar hingga syarat pencapaian terpenuhi.</p>
-
-      <div class="badge-grid">
-        <!-- Badge 1: Terbuka -->
-        <div class="badge-item">
-          <div class="badge-icon">🔥</div>
-          <div class="badge-label">Streak 7 Hari</div>
-          <div class="badge-sub">Konsisten</div>
-        </div>
-
-        <!-- Badge 2: Terbuka -->
-        <div class="badge-item">
-          <div class="badge-icon">📝</div>
-          <div class="badge-label">Grammar Master</div>
-          <div class="badge-sub">10 Kuis Selesai</div>
-        </div>
-
-        <!-- Badge 3: Terbuka -->
-        <div class="badge-item">
-          <div class="badge-icon">🎯</div>
-          <div class="badge-label">Akurasi 100%</div>
-          <div class="badge-sub">Skor Sempurna</div>
-        </div>
-
-        <!-- Badge 4: Terbuka -->
-        <div class="badge-item">
-          <div class="badge-icon">🔊</div>
-          <div class="badge-label">Telinga Emas</div>
-          <div class="badge-sub">Dikte ≥ 85</div>
-        </div>
-
-        <!-- Badge 5: Terkunci -->
-        <div class="badge-item locked" title="Kunci: Belajar 30 hari tanpa putus">
-          <div class="badge-icon">⚡</div>
-          <div class="badge-label">Streak 30 Hari</div>
-          <div class="badge-sub">Terkunci 🔒</div>
-        </div>
-
-        <!-- Badge 6: Terkunci -->
-        <div class="badge-item locked" title="Kunci: Kumpulkan 5.000 XP total">
-          <div class="badge-icon">💎</div>
-          <div class="badge-label">5.000 XP Club</div>
-          <div class="badge-sub">Terkunci 🔒</div>
-        </div>
-
-        <!-- Badge 7: Terkunci -->
-        <div class="badge-item locked" title="Kunci: Masuk 5 besar leaderboard mingguan">
-          <div class="badge-icon">🏅</div>
-          <div class="badge-label">Top 5 Kampus</div>
-          <div class="badge-sub">Terkunci 🔒</div>
-        </div>
-
-        <!-- Badge 8: Terkunci -->
-        <div class="badge-item locked" title="Kunci: Capai Level C1 pada tes penempatan">
-          <div class="badge-icon">🎓</div>
-          <div class="badge-label">Sertifikasi C1</div>
-          <div class="badge-sub">Terkunci 🔒</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 

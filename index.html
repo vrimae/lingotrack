@@ -12,57 +12,65 @@
    CSS VARIABLES — TEMA WARNA HANGAT & RAMAH (KUNING PASTEL)
    ======================================================== */
 :root {
-  --bg-main: #FAFAF7; /* Putih bersih bernuansa lembut */
-  --bg-subtle: #FFFDF0;
-  --surface: #FFFFFF; /* Putih murni */
-  --surface-alt: #FEFCE8; /* Kuning pastel sangat lembut */
-  --border: #FEF08A; /* Kuning pastel cerah */
-  --border-subtle: #FEF9C3; /* Kuning pastel halus */
-  --border-card: #F3EFC7; /* Border kartu lembut */
-  
-  --accent: #FDE047; /* Kuning pastel ceria */
-  --accent-hover: #FACC15;
-  --accent-text: #0F172A; /* Slate charcoal gelap modern, BUKAN cokelat */
-  --accent-secondary: #FEF9C3; /* Kuning mentega lembut */
-  --accent-secondary-hover: #FEF08A;
+  /* ========================================================
+     PALET EDITORIAL STUDIO: LINEN CREAM + PALE BUTTER YELLOW
+     (Persis sesuai referensi desain majalah editorial)
+     ======================================================== */
+  --bg-main: #F7F5EC;          /* Latar krem linen alami dari referensi */
+  --bg-subtle: #FAF9F3;        /* Krem muda halus */
+  --surface: #FFFFFF;          /* Putih bersih untuk kartu */
+  --surface-alt: #FAF8F0;      /* Putih krem halus */
+  --surface-butter: #EDE796;   /* Kuning butter khas 4 kartu referensi */
+  --surface-butter-light: #F4F0AA;
 
-  /* Tipografi Bersih & Elegan */
-  --text-primary: #0F172A; /* Slate charcoal modern super bersih */
-  --text-secondary: #475569; /* Slate elegan */
-  --text-muted: #94A3B8; /* Abu-abu netral */
+  --border: #DFD98A;           /* Border kuning pastel lembut */
+  --border-subtle: #E8E3BC;    /* Hairline border halus */
+  --border-card: #E8E3BE;      /* Border kartu tipis rapi */
+  --border-dark: #1A1A18;      /* Border tipis pill ala "Shop Now" */
+
+  --accent: #EDE796;           /* Butter yellow signature dari tombol "Shop Now" */
+  --accent-hover: #E4DE7E;     /* Sedikit lebih pekat saat hover */
+  --accent-text: #141412;      /* Hitam editorial tajam, bersih */
+  --accent-secondary: #F5F1B5; /* Kuning mentega muda */
+  --accent-secondary-hover: #EDE796;
+
+  /* Tipografi Editorial (Hitam Bersih & Charcoal Muted, Bebas Cokelat) */
+  --text-primary: #141412;     /* Editorial Black elegan & tajam */
+  --text-secondary: #52524A;   /* Muted charcoal */
+  --text-muted: #828276;       /* Abu-abu hangat netral */
   --text-inverse: #FFFFFF;
-  
+
   /* Status Colors */
-  --success: #34D399;
-  --success-bg: #ECFDF5;
-  --success-text: #065F46;
-  --error: #F87171;
-  --error-bg: #FEF2F2;
-  --error-text: #991B1B;
-  --warning: #FBBF24;
-  --warning-bg: #FFFBEB;
-  --warning-text: #92400E;
-  --info: #38BDF8;
-  --info-bg: #F0F9FF;
-  --info-text: #075985;
+  --success: #38A169;
+  --success-bg: #E6F8EE;
+  --success-text: #1C4D32;
+  --error: #E53E3E;
+  --error-bg: #FEF0F0;
+  --error-text: #742A2A;
+  --warning: #D69E2E;
+  --warning-bg: #FEFBF0;
+  --warning-text: #603808;
+  --info: #3182CE;
+  --info-bg: #EBF8FF;
+  --info-text: #1A365D;
 
   /* Diff Highlight Colors */
-  --diff-correct: #D1FAE5;
-  --diff-correct-text: #065F46;
-  --diff-wrong: #FEE2E2;
-  --diff-wrong-text: #991B1B;
-  --diff-missing: #FEF3C7;
-  --diff-missing-text: #92400E;
-  --diff-extra: #F3E8FF;
-  --diff-extra-text: #6B21A8;
-  --diff-cap: #E0F2FE;
-  --diff-cap-text: #0369A1;
+  --diff-correct: #D4F4E2;
+  --diff-correct-text: #1C4D32;
+  --diff-wrong: #FDD8D8;
+  --diff-wrong-text: #742A2A;
+  --diff-missing: #F7F1A6;
+  --diff-missing-text: #5A4808;
+  --diff-extra: #EAE2F7;
+  --diff-extra-text: #442468;
+  --diff-cap: #D8EEF8;
+  --diff-cap-text: #154F68;
 
-  /* Elevation & Shadows (Bersih & Elegan, Tanpa Cokelat) */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(250, 204, 21, 0.05);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(250, 204, 21, 0.07);
-  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(250, 204, 21, 0.12);
-  --shadow-focus: 0 0 0 3px rgba(253, 224, 71, 0.5);
+  /* Elevation & Shadows: Sangat halus, bersih, bernuansa majalah */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(220, 210, 120, 0.1);
+  --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(237, 231, 150, 0.65);
 
   /* Radii & Typography */
   --radius-card: 16px;
@@ -70,67 +78,10 @@
   --radius-pill: 999px;
   --font-heading: 'Lora', Georgia, serif;
   --font-body: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
-  /* Component tokens */
+
   --input-bg: #FFFFFF;
-  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-bg: rgba(247, 245, 236, 0.96);
   --badge-locked-opacity: 0.35;
-}
-
-[data-theme="dark"] {
-  --bg-main: #0B0F19; /* Deep modern slate, bersih tanpa cokelat */
-  --bg-subtle: #111827;
-  --surface: #1E293B; /* Slate surface */
-  --surface-alt: #162032;
-  --border: #334155;
-  --border-subtle: #1E293B;
-  --border-card: #2E3B52;
-
-  --accent: #FDE047; /* Kuning pastel cerah di dark mode */
-  --accent-hover: #FACC15;
-  --accent-text: #0F172A;
-  --accent-secondary: #27354E;
-  --accent-secondary-hover: #334466;
-
-  --text-primary: #F8FAFC; /* Putih bersih */
-  --text-secondary: #94A3B8; /* Slate terang */
-  --text-muted: #64748B;
-  --text-inverse: #0B0F19;
-
-  /* Status Colors Dark */
-  --success: #34D399;
-  --success-bg: #064E3B;
-  --success-text: #A7F3D0;
-  --error: #F87171;
-  --error-bg: #7F1D1D;
-  --error-text: #FECACA;
-  --warning: #FBBF24;
-  --warning-bg: #78350F;
-  --warning-text: #FDE68A;
-  --info: #38BDF8;
-  --info-bg: #0C4A6E;
-  --info-text: #BAE6FD;
-
-  /* Diff Highlight Colors Dark */
-  --diff-correct: #064E3B;
-  --diff-correct-text: #A7F3D0;
-  --diff-wrong: #7F1D1D;
-  --diff-wrong-text: #FECACA;
-  --diff-missing: #78350F;
-  --diff-missing-text: #FDE68A;
-  --diff-extra: #581C87;
-  --diff-extra-text: #E9D5FF;
-  --diff-cap: #0C4A6E;
-  --diff-cap-text: #BAE6FD;
-
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
-  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.65);
-  --shadow-focus: 0 0 0 3px rgba(253, 224, 71, 0.4);
-
-  --input-bg: #151D2C;
-  --nav-bg: rgba(15, 23, 42, 0.95);
-  --badge-locked-opacity: 0.3;
 }
 
 /* ========================================================
@@ -428,25 +379,26 @@ p, li, td, th, label, input, select, textarea, .text-prose {
 
 .btn-primary {
   background: var(--accent);
-  color: var(--accent-text);
-  border-color: var(--border-subtle);
-  box-shadow: 0 2px 8px var(--shadow-sm);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .btn-primary:hover:not(:disabled) {
   background: var(--accent-hover);
-  box-shadow: 0 4px 12px var(--shadow-card);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .btn-secondary {
-  background: var(--accent-secondary);
+  background: #FFFFFF;
   color: var(--text-primary);
-  border-color: var(--border);
+  border: 1px solid var(--border);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--accent-secondary-hover);
-  color: var(--accent-text);
+  background: var(--surface-butter);
+  border-color: var(--border-dark);
 }
 
 .btn-outline {
@@ -501,29 +453,33 @@ p, li, td, th, label, input, select, textarea, .text-prose {
 
 .stat-card {
   text-align: center;
-  padding: 1rem 0.75rem;
+  padding: 1.25rem 0.9rem;
   border-radius: var(--radius-card);
-  background: var(--surface);
+  background: var(--surface-butter);
   border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: transform 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
 }
 
 .stat-card .stat-value {
   font-family: var(--font-heading);
-  font-size: 1.65rem;
+  font-size: 1.95rem;
   font-weight: 700;
-  color: var(--accent-text);
-  line-height: 1.2;
-}
-
-[data-theme="dark"] .stat-card .stat-value {
-  color: var(--accent);
+  color: var(--text-primary);
+  line-height: 1.15;
 }
 
 .stat-card .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
-  font-weight: 600;
-  margin-top: 0.25rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 /* ========================================================
@@ -851,9 +807,7 @@ tr.highlight-user td {
   border-bottom-color: var(--accent-hover);
 }
 
-[data-theme="dark"] .tab-btn.active {
-  color: var(--accent);
-}
+
 
 .tab-content { display: none; }
 .tab-content.active { display: block; }
@@ -1030,17 +984,14 @@ tr.highlight-user td {
    ======================================================== */
 .cefr-card {
   text-align: center;
-  padding: 2.1rem 1.6rem;
-  background: linear-gradient(135deg, #FFFFFF 0%, #FEFCE8 50%, #FEF08A 100%);
+  padding: 2.3rem 1.6rem;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FAF8EE 45%, #EDE796 100%);
   border-radius: var(--radius-card);
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-card);
 }
 
-[data-theme="dark"] .cefr-card {
-  background: linear-gradient(135deg, #1E293B 0%, #25334A 50%, #334466 100%);
-  border: 1.5px solid var(--border);
-}
+
 
 .cefr-level-badge {
   font-family: var(--font-heading);
@@ -1085,9 +1036,7 @@ tr.highlight-user td {
   line-height: 1;
 }
 
-[data-theme="dark"] .score-circle .score-num {
-  color: var(--accent);
-}
+
 
 .score-circle .score-label {
   font-size: 0.75rem;
@@ -1246,11 +1195,11 @@ canvas#trendCanvas {
       <li><a href="#leaderboard" data-page="leaderboard"><span>🏆</span> Peringkat</a></li>
     </ul>
 
+    
     <div class="nav-actions">
-      <button class="theme-btn" onclick="toggleTheme()" aria-label="Ganti mode terang/gelap" id="themeBtnDesktop">
-        <span id="themeIconDesktop">☀</span>
-        <span id="themeTextDesktop" class="text-xs">Terang</span>
-      </button>
+      <div class="chip" style="background:var(--accent); border:1px solid var(--border-dark); font-weight:700; color:var(--text-primary); padding:0.4rem 0.9rem;">
+        <span>🎓 Mahasiswa Indonesia</span>
+      </div>
     </div>
   </div>
 </nav>
@@ -1507,9 +1456,10 @@ canvas#trendCanvas {
         <h1 style="font-size: 1.6rem;">Halo, <span id="dashStudentName">Aisyah</span>! 👋</h1>
         <p class="text-secondary text-sm"><span id="dashMajorDisplay">Teknik Informatika</span> • Siap mencapai target skor Anda.</p>
       </div>
-      <button class="theme-btn" onclick="toggleTheme()" aria-label="Ganti tema">
-        <span class="mobile-theme-icon">☀</span>
-      </button>
+      
+      <div class="chip" style="background:var(--accent); border:1px solid var(--border); font-weight:700; color:var(--text-primary);">
+        <span>🔥 14 Hari Streak</span>
+      </div>
     </div>
 
     <!-- Kartu Level CEFR & Target Skor -->
@@ -2226,35 +2176,16 @@ const state = {
 /* ========================================================
    2. MANAJEMEN TEMA (DARK / LIGHT MODE)
    ======================================================== */
+
 function initTheme() {
-  const saved = localStorage.getItem('lingotrack-theme');
-  if (saved) {
-    state.theme = saved;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    state.theme = 'dark';
-  }
-  applyThemeDOM();
+  state.theme = 'light';
+  document.documentElement.setAttribute('data-theme', 'light');
 }
 
 function toggleTheme() {
-  state.theme = state.theme === 'dark' ? 'light' : 'dark';
-  localStorage.setItem('lingotrack-theme', state.theme);
-  applyThemeDOM();
-  renderTrendChart(); // Gambar ulang chart dengan warna kontras tema yang sesuai
-}
-
-function applyThemeDOM() {
-  document.documentElement.setAttribute('data-theme', state.theme);
-  const isDark = state.theme === 'dark';
-  
-  const icon = document.getElementById('themeIconDesktop');
-  const text = document.getElementById('themeTextDesktop');
-  if (icon) icon.textContent = isDark ? '☾' : '☀';
-  if (text) text.textContent = isDark ? 'Gelap' : 'Terang';
-  
-  document.querySelectorAll('.mobile-theme-icon').forEach(el => {
-    el.textContent = isDark ? '☾' : '☀';
-  });
+  state.theme = 'light';
+  document.documentElement.setAttribute('data-theme', 'light');
+});
 }
 
 /* ========================================================
@@ -2645,10 +2576,10 @@ function renderTrendChart() {
   ctx.clearRect(0, 0, w, h);
 
   // Palet grafik sesuai tema
-  const lineColor = isDark ? '#FDE047' : '#EAB308';
-  const dotColor = isDark ? '#FFFFFF' : '#0F172A';
-  const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
-  const textColor = isDark ? '#94A3B8' : '#64748B';
+  const lineColor = '#C2B922';
+  const dotColor = '#141412';
+  const gridColor = 'rgba(223, 217, 138, 0.35)';
+  const textColor = '#52524A';
 
   // 30 hari data simulasi progres nyata
   const data = [
@@ -2699,7 +2630,7 @@ function renderTrendChart() {
     grad.addColorStop(0, 'rgba(253, 224, 71, 0.25)');
     grad.addColorStop(1, 'rgba(253, 224, 71, 0.01)');
   } else {
-    grad.addColorStop(0, 'rgba(253, 224, 71, 0.45)');
+    grad.addColorStop(0, 'rgba(237, 231, 150, 0.55)');
     grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
   }
 

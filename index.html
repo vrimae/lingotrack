@@ -289,119 +289,173 @@ p, li, td, th, label, input, select, textarea, .text-prose {
 }
 
 /* ========================================================
-   NAVIGASI (TOP DESKTOP & BOTTOM MOBILE)
+   NAVIGASI BILAH KIRI (LEFT SIDEBAR NAVBAR - DESKTOP)
    ======================================================== */
-.top-nav {
-  background: var(--nav-bg);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.sidebar-nav {
   display: none;
-  box-shadow: var(--shadow-sm);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
-@media (min-width: 768px) {
-  .top-nav { display: block; }
+@media (min-width: 900px) {
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    height: 100vh;
+    background: var(--bg-main);
+    border-right: 1.5px solid var(--border-card);
+    padding: 1.75rem 1.25rem 1.4rem;
+    z-index: 1000;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.02);
+    overflow-y: auto;
+  }
+
+  body.has-sidebar {
+    padding-bottom: 0 !important;
+  }
+
+  body.has-sidebar .page {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    min-height: 100vh;
+  }
 }
 
+.sidebar-brand-box {
+  margin-bottom: 1.4rem;
+}
 
-.top-nav-inner {
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
+.sidebar-user-badge {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-inner);
+  padding: 0.75rem 0.85rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 3rem;
-  height: 68px;
+  gap: 0.65rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border-dark);
+}
+
+.sidebar-user-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.sidebar-user-major {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
 }
 
 .logo-brand {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--accent-text);
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   text-decoration: none;
   cursor: pointer;
 }
 
 .logo-brand-mark {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
   background: var(--accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: var(--accent-text);
+  border: 1px solid var(--border-dark);
   box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
 }
 
-.nav-links {
+/* Navigasi Vertikal Bilah Kiri */
+.sidebar-nav .nav-links {
   display: flex;
-  gap: 0.25rem;
+  flex-direction: column;
+  gap: 0.45rem;
   list-style: none;
+  width: 100%;
 }
 
-.nav-links a {
+.sidebar-nav .nav-links a {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.9rem;
-  border-radius: var(--radius-pill);
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
   text-decoration: none;
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: background 0.15s, color 0.15s;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: all 0.15s ease;
+  border: 1.5px solid transparent;
 }
 
-.nav-links a:hover {
-  background: var(--accent-secondary);
+.sidebar-nav .nav-links a:hover {
+  background: #FFFFFF;
   color: var(--text-primary);
+  border-color: var(--border-subtle);
+  transform: translateX(3px);
 }
 
-.nav-links a.active {
-  background: var(--accent);
-  color: var(--accent-text);
-  box-shadow: 0 1px 4px var(--shadow-sm);
+.sidebar-nav .nav-links a.active {
+  background: var(--accent) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-dark) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.nav-actions {
+.sidebar-nav .nav-links a .nav-icon-box {
+  width: 22px;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sidebar-streak-card {
+  background: var(--surface-butter);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-inner);
+  padding: 0.65rem 0.85rem;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-}
-
-.theme-btn {
-  background: var(--accent-secondary);
-  border: 1px solid var(--border);
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--text-primary);
-  border-radius: var(--radius-pill);
-  padding: 0.45rem 0.75rem;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: background 0.15s, transform 0.1s;
-}
-
-.theme-btn:hover {
-  background: var(--accent);
-  color: var(--accent-text);
-}
-
-.theme-btn:active {
-  transform: scale(0.96);
+  margin-bottom: 0.75rem;
 }
 
 /* Navigasi Mobile (Bottom Bar) */
@@ -1291,36 +1345,85 @@ canvas#trendCanvas {
 <body>
 
 <!-- ========================================================
-     NAVIGASI ATAS (DESKTOP)
+     NAVIGASI BILAH KIRI (LEFT SIDEBAR NAVBAR)
      ======================================================== -->
-<nav class="top-nav" id="topNav">
-  <div class="top-nav-inner">
-    <div class="logo-brand" onclick="goToPage('dashboard')">
-      <span class="logo-brand-mark">L</span>
-      <span>LingoTrack</span>
-    </div>
-
-    <ul class="nav-links">
-      <li><a href="#dashboard" data-page="dashboard" class="active"><span>☗</span> Beranda</a></li>
-      <li><a href="#quiz" data-page="quiz"><span>✎</span> Kuis</a></li>
-      <li><a href="#dictation" data-page="dictation"><span>🔊</span> Dikte B2</a></li>
-      <li><a href="#vocab" data-page="vocab"><span>📖</span> Kosakata</a></li>
-      <li><a href="#goals" data-page="goals"><span>🎯</span> Target</a></li>
-      <li><a href="#leaderboard" data-page="leaderboard"><span>🏆</span> Peringkat</a></li>
-    </ul>
-
-    
-    <div class="nav-actions" style="display:flex; align-items:center; gap:0.6rem;">
-      <div class="chip" style="background:var(--accent); border:1px solid var(--border-dark); font-weight:700; color:var(--text-primary); padding:0.4rem 0.9rem;">
-        <span>🎓 <span id="navUserName">Aisyah Putri</span></span>
+<aside class="sidebar-nav" id="sidebarNav">
+  <div>
+    <!-- Brand Header -->
+    <div class="sidebar-brand-box">
+      <div class="logo-brand" onclick="goToPage('dashboard')">
+        <span class="logo-brand-mark">L</span>
+        <span>LingoTrack</span>
       </div>
-      <button class="btn btn-sm btn-secondary" onclick="handleLogout()" style="font-size:0.75rem; padding:0.35rem 0.8rem;" title="Keluar dari akun">
-        🚪 Keluar
-      </button>
+      <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.35rem; font-weight:600;">
+        Pelacak Kecakapan Bahasa Inggris
+      </div>
+
+      <!-- Kartu Pengguna di Sidebar Kiri -->
+      <div class="sidebar-user-badge">
+        <div class="sidebar-user-avatar">🎓</div>
+        <div>
+          <div class="sidebar-user-name" id="sideUserName">Aisyah Putri</div>
+          <div class="sidebar-user-major" id="sideUserMajor">Teknik Informatika • UI</div>
+        </div>
+      </div>
     </div>
-    </div>
+
+    <!-- Menu Vertikal di Sisi Kiri -->
+    <ul class="nav-links">
+      <li>
+        <a href="#dashboard" data-page="dashboard" class="active">
+          <span class="nav-icon-box">☗</span>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li>
+        <a href="#quiz" data-page="quiz">
+          <span class="nav-icon-box">✎</span>
+          <span>Kuis Level</span>
+        </a>
+      </li>
+      <li>
+        <a href="#dictation" data-page="dictation">
+          <span class="nav-icon-box">🔊</span>
+          <span>Dikte B2</span>
+        </a>
+      </li>
+      <li>
+        <a href="#vocab" data-page="vocab">
+          <span class="nav-icon-box">📖</span>
+          <span>Kosakata</span>
+        </a>
+      </li>
+      <li>
+        <a href="#goals" data-page="goals">
+          <span class="nav-icon-box">🎯</span>
+          <span>Target & Lencana</span>
+        </a>
+      </li>
+      <li>
+        <a href="#leaderboard" data-page="leaderboard">
+          <span class="nav-icon-box">🏆</span>
+          <span>Peringkat</span>
+        </a>
+      </li>
+    </ul>
   </div>
-</nav>
+
+  <!-- Bagian Bawah Sidebar (Streak & Keluar) -->
+  <div class="sidebar-footer">
+    <div class="sidebar-streak-card">
+      <span style="display:flex; align-items:center; gap:0.4rem;">
+        <span class="streak-flame">🔥</span> Streak Belajar
+      </span>
+      <span class="chip" style="background:#FFFFFF; border:1px solid var(--border-dark); font-size:0.75rem; padding:0.15rem 0.5rem;" id="sideStreakNum">14 Hari</span>
+    </div>
+
+    <button class="btn btn-secondary btn-block btn-sm" onclick="handleLogout()" style="display:flex; align-items:center; justify-content:center; gap:0.45rem;">
+      <span>🚪</span> Keluar Akun
+    </button>
+  </div>
+</aside>
 
 <!-- ========================================================
      NAVIGASI BAWAH (MOBILE)
@@ -2476,14 +2579,16 @@ function goToPage(pageId) {
     a.classList.toggle('active', isCurrent);
   });
 
-  // Tampilkan navigasi hanya setelah onboarding & placement selesai
-  const isLandingFlow = (pageId === 'onboarding' || pageId === 'placement');
-  const topNav = document.getElementById('topNav');
+  // Tampilkan sidebar dan bottom nav hanya di luar alur onboarding & placement
+  const isAuthFlow = (pageId === 'onboarding' || pageId === 'placement');
+  const sidebar = document.getElementById('sidebarNav');
   const bottomNav = document.getElementById('bottomNav');
-  if (topNav) topNav.style.display = isLandingFlow ? 'none' : '';
-  if (bottomNav) bottomNav.style.display = isLandingFlow ? 'none' : '';
+  if (sidebar) sidebar.style.display = isAuthFlow ? 'none' : '';
+  if (bottomNav) bottomNav.style.display = isAuthFlow ? 'none' : '';
 
-  // Render spesifik per halaman
+  // Tambahkan offset margin untuk layout sidebar di desktop
+  document.body.classList.toggle('has-sidebar', !isAuthFlow);
+
   if (pageId === 'dashboard') {
     updateDashboardUI();
     setTimeout(renderTrendChart, 80);
@@ -2791,6 +2896,14 @@ function enterDashboardFromPlacement() {
    7. DASBOR UTAMA & SINKRONISASI DATA
    ======================================================== */
 function updateDashboardUI() {
+  // Sinkronisasi data di Sidebar Kiri
+  const sideName = document.getElementById('sideUserName');
+  const sideMajor = document.getElementById('sideUserMajor');
+  const sideStreak = document.getElementById('sideStreakNum');
+  if (sideName) sideName.textContent = state.user.name;
+  if (sideMajor) sideMajor.textContent = `${state.user.major} • UI`;
+  if (sideStreak) sideStreak.textContent = `${state.user.streak} Hari`;
+
   const firstName = state.user.name.split(' ')[0];
   document.getElementById('dashStudentName').textContent = firstName;
   document.getElementById('dashMajorDisplay').textContent = state.user.major;
@@ -3496,7 +3609,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateDashboardUI();
 
   // Awali di halaman Onboarding (Navigasi desktop/mobile tersembunyi hingga masuk dasbor)
-  document.getElementById('topNav').style.display = 'none';
+  const sb = document.getElementById('sidebarNav'); if(sb) sb.style.display = 'none';
   document.getElementById('bottomNav').style.display = 'none';
 });
 </script>

@@ -12,116 +12,125 @@
    CSS VARIABLES — TEMA WARNA HANGAT & RAMAH (KUNING PASTEL)
    ======================================================== */
 :root {
-  --bg-main: #FFF9E0;
-  --surface: #FFFFFF;
-  --surface-alt: #FBF6D8;
-  --border: #F1E4A8;
-  --border-subtle: #E8DA97;
-  --accent: #FBE38E;
-  --accent-hover: #F2D572;
-  --accent-text: #4A3B12;
-  --accent-secondary: #FFF1B8;
-  --accent-secondary-hover: #F9E59E;
-  --text-primary: #3B3010;
-  --text-secondary: #7A6A3A;
-  --text-muted: #9E8C56;
+  --bg-main: #FAFAF7; /* Putih bersih bernuansa lembut */
+  --bg-subtle: #FFFDF0;
+  --surface: #FFFFFF; /* Putih murni */
+  --surface-alt: #FEFCE8; /* Kuning pastel sangat lembut */
+  --border: #FEF08A; /* Kuning pastel cerah */
+  --border-subtle: #FEF9C3; /* Kuning pastel halus */
+  --border-card: #F3EFC7; /* Border kartu lembut */
+  
+  --accent: #FDE047; /* Kuning pastel ceria */
+  --accent-hover: #FACC15;
+  --accent-text: #0F172A; /* Slate charcoal gelap modern, BUKAN cokelat */
+  --accent-secondary: #FEF9C3; /* Kuning mentega lembut */
+  --accent-secondary-hover: #FEF08A;
+
+  /* Tipografi Bersih & Elegan */
+  --text-primary: #0F172A; /* Slate charcoal modern super bersih */
+  --text-secondary: #475569; /* Slate elegan */
+  --text-muted: #94A3B8; /* Abu-abu netral */
   --text-inverse: #FFFFFF;
   
   /* Status Colors */
-  --success: #7FB88A;
-  --success-bg: #EAF5ED;
-  --success-text: #24522E;
-  --error: #E08A7A;
-  --error-bg: #FBECE9;
-  --error-text: #692215;
-  --warning: #F4B860;
-  --warning-bg: #FEF3DE;
-  --warning-text: #5E3D06;
-  --info: #85C0D4;
-  --info-bg: #EBF5F8;
-  --info-text: #194F60;
+  --success: #34D399;
+  --success-bg: #ECFDF5;
+  --success-text: #065F46;
+  --error: #F87171;
+  --error-bg: #FEF2F2;
+  --error-text: #991B1B;
+  --warning: #FBBF24;
+  --warning-bg: #FFFBEB;
+  --warning-text: #92400E;
+  --info: #38BDF8;
+  --info-bg: #F0F9FF;
+  --info-text: #075985;
 
   /* Diff Highlight Colors */
-  --diff-correct: #D9EFE0;
-  --diff-correct-text: #1E502B;
-  --diff-wrong: #FBD7D1;
-  --diff-wrong-text: #87281A;
-  --diff-missing: #FEF3CD;
-  --diff-missing-text: #6D5103;
-  --diff-extra: #EADEF7;
-  --diff-extra-text: #4B276B;
-  --diff-cap: #D8EEF8;
-  --diff-cap-text: #154F68;
+  --diff-correct: #D1FAE5;
+  --diff-correct-text: #065F46;
+  --diff-wrong: #FEE2E2;
+  --diff-wrong-text: #991B1B;
+  --diff-missing: #FEF3C7;
+  --diff-missing-text: #92400E;
+  --diff-extra: #F3E8FF;
+  --diff-extra-text: #6B21A8;
+  --diff-cap: #E0F2FE;
+  --diff-cap-text: #0369A1;
 
-  /* Elevation & Shadows (Warm Yellow-Brown Tint) */
-  --shadow-sm: 0 2px 6px rgba(74, 59, 18, 0.05);
-  --shadow-card: 0 4px 16px rgba(74, 59, 18, 0.07);
-  --shadow-float: 0 8px 24px rgba(74, 59, 18, 0.12);
-  --shadow-focus: 0 0 0 3px rgba(251, 227, 142, 0.45);
+  /* Elevation & Shadows (Bersih & Elegan, Tanpa Cokelat) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(250, 204, 21, 0.05);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(250, 204, 21, 0.07);
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(250, 204, 21, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(253, 224, 71, 0.5);
 
   /* Radii & Typography */
-  --radius-card: 12px;
-  --radius-inner: 8px;
+  --radius-card: 16px;
+  --radius-inner: 10px;
   --radius-pill: 999px;
   --font-heading: 'Lora', Georgia, serif;
   --font-body: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Component tokens */
   --input-bg: #FFFFFF;
-  --nav-bg: #FFFDF4;
+  --nav-bg: rgba(255, 255, 255, 0.95);
   --badge-locked-opacity: 0.35;
 }
 
 [data-theme="dark"] {
-  --bg-main: #2A2410;
-  --surface: #3A3420;
-  --surface-alt: #322C1A;
-  --border: #504828;
-  --border-subtle: #453D20;
-  --accent: #FBE38E;
-  --accent-hover: #F2D572;
-  --accent-text: #4A3B12;
-  --accent-secondary: #4A4228;
-  --accent-secondary-hover: #584F32;
-  --text-primary: #F7EFCF;
-  --text-secondary: #C8BA91;
-  --text-muted: #9C8F66;
-  --text-inverse: #2A2410;
+  --bg-main: #0B0F19; /* Deep modern slate, bersih tanpa cokelat */
+  --bg-subtle: #111827;
+  --surface: #1E293B; /* Slate surface */
+  --surface-alt: #162032;
+  --border: #334155;
+  --border-subtle: #1E293B;
+  --border-card: #2E3B52;
+
+  --accent: #FDE047; /* Kuning pastel cerah di dark mode */
+  --accent-hover: #FACC15;
+  --accent-text: #0F172A;
+  --accent-secondary: #27354E;
+  --accent-secondary-hover: #334466;
+
+  --text-primary: #F8FAFC; /* Putih bersih */
+  --text-secondary: #94A3B8; /* Slate terang */
+  --text-muted: #64748B;
+  --text-inverse: #0B0F19;
 
   /* Status Colors Dark */
-  --success: #7FB88A;
-  --success-bg: #2B3C2F;
-  --success-text: #B4E6BD;
-  --error: #E08A7A;
-  --error-bg: #3E2927;
-  --error-text: #F3BCB2;
-  --warning: #F4B860;
-  --warning-bg: #40341E;
-  --warning-text: #FAD998;
-  --info: #85C0D4;
-  --info-bg: #263840;
-  --info-text: #BEE1ED;
+  --success: #34D399;
+  --success-bg: #064E3B;
+  --success-text: #A7F3D0;
+  --error: #F87171;
+  --error-bg: #7F1D1D;
+  --error-text: #FECACA;
+  --warning: #FBBF24;
+  --warning-bg: #78350F;
+  --warning-text: #FDE68A;
+  --info: #38BDF8;
+  --info-bg: #0C4A6E;
+  --info-text: #BAE6FD;
 
   /* Diff Highlight Colors Dark */
-  --diff-correct: #2B3C2F;
-  --diff-correct-text: #B4E6BD;
-  --diff-wrong: #452824;
-  --diff-wrong-text: #F4BCB2;
-  --diff-missing: #42381F;
-  --diff-missing-text: #F7D993;
-  --diff-extra: #3A2B47;
-  --diff-extra-text: #D5BFF0;
-  --diff-cap: #243542;
-  --diff-cap-text: #BAE2F2;
+  --diff-correct: #064E3B;
+  --diff-correct-text: #A7F3D0;
+  --diff-wrong: #7F1D1D;
+  --diff-wrong-text: #FECACA;
+  --diff-missing: #78350F;
+  --diff-missing-text: #FDE68A;
+  --diff-extra: #581C87;
+  --diff-extra-text: #E9D5FF;
+  --diff-cap: #0C4A6E;
+  --diff-cap-text: #BAE6FD;
 
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.35);
-  --shadow-float: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-focus: 0 0 0 3px rgba(251, 227, 142, 0.35);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.65);
+  --shadow-focus: 0 0 0 3px rgba(253, 224, 71, 0.4);
 
-  --input-bg: #322C1A;
-  --nav-bg: #312B17;
-  --badge-locked-opacity: 0.25;
+  --input-bg: #151D2C;
+  --nav-bg: rgba(15, 23, 42, 0.95);
+  --badge-locked-opacity: 0.3;
 }
 
 /* ========================================================
@@ -274,7 +283,7 @@ p, li, td, th, label, input, select, textarea, .text-prose {
   font-size: 0.9rem;
   font-weight: 800;
   color: var(--accent-text);
-  box-shadow: 0 2px 5px rgba(74, 59, 18, 0.15);
+  box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
 }
 
 .nav-links {
@@ -469,9 +478,7 @@ p, li, td, th, label, input, select, textarea, .text-prose {
    ======================================================== */
 .card {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  padding: 1.35rem;
+  border: 1.5px solid var(--border-card); border-radius: var(--radius-card); padding: 1.4rem;
   box-shadow: var(--shadow-card);
   transition: background-color 0.25s, border-color 0.25s;
 }
@@ -560,7 +567,7 @@ p, li, td, th, label, input, select, textarea, .text-prose {
 
 .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A6A3A' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.85rem center;
   padding-right: 2.25rem;
@@ -756,9 +763,9 @@ tr.highlight-user td {
   box-shadow: 0 1px 4px var(--shadow-sm);
 }
 
-.rank-1 { background: #FFDF6D; color: #4A3B12; border: 1.5px solid #E5C345; }
-.rank-2 { background: #E8E5DD; color: #3B3010; border: 1.5px solid #C8C5BC; }
-.rank-3 { background: #F1C39A; color: #4A2E12; border: 1.5px solid #DBA87B; }
+.rank-1 { background: #FEF08A; color: #0F172A; border: 1.5px solid #FDE047; }
+.rank-2 { background: #F1F5F9; color: #1E293B; border: 1.5px solid #CBD5E1; }
+.rank-3 { background: #FFEDD5; color: #7C2D12; border: 1.5px solid #FDBA74; }
 
 /* ========================================================
    KOMPONEN: TOAST
@@ -1023,11 +1030,16 @@ tr.highlight-user td {
    ======================================================== */
 .cefr-card {
   text-align: center;
-  padding: 1.85rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent) 100%);
+  padding: 2.1rem 1.6rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FEFCE8 50%, #FEF08A 100%);
   border-radius: var(--radius-card);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border);
   box-shadow: var(--shadow-card);
+}
+
+[data-theme="dark"] .cefr-card {
+  background: linear-gradient(135deg, #1E293B 0%, #25334A 50%, #334466 100%);
+  border: 1.5px solid var(--border);
 }
 
 .cefr-level-badge {
@@ -2633,10 +2645,10 @@ function renderTrendChart() {
   ctx.clearRect(0, 0, w, h);
 
   // Palet grafik sesuai tema
-  const lineColor = isDark ? '#FBE38E' : '#C49B1A';
-  const dotColor = isDark ? '#FFFFFF' : '#4A3B12';
-  const gridColor = isDark ? 'rgba(255, 241, 184, 0.08)' : 'rgba(74, 59, 18, 0.07)';
-  const textColor = isDark ? '#C8BA91' : '#7A6A3A';
+  const lineColor = isDark ? '#FDE047' : '#EAB308';
+  const dotColor = isDark ? '#FFFFFF' : '#0F172A';
+  const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
+  const textColor = isDark ? '#94A3B8' : '#64748B';
 
   // 30 hari data simulasi progres nyata
   const data = [
@@ -2684,11 +2696,11 @@ function renderTrendChart() {
   // 1. Gambar Area Isian Kuning Pastel (Gradient Fill)
   const grad = ctx.createLinearGradient(0, paddingTop, 0, paddingTop + plotH);
   if (isDark) {
-    grad.addColorStop(0, 'rgba(251, 227, 142, 0.35)');
-    grad.addColorStop(1, 'rgba(251, 227, 142, 0.02)');
+    grad.addColorStop(0, 'rgba(253, 224, 71, 0.25)');
+    grad.addColorStop(1, 'rgba(253, 224, 71, 0.01)');
   } else {
-    grad.addColorStop(0, 'rgba(251, 227, 142, 0.55)');
-    grad.addColorStop(1, 'rgba(255, 249, 224, 0.05)');
+    grad.addColorStop(0, 'rgba(253, 224, 71, 0.45)');
+    grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
   }
 
   ctx.beginPath();

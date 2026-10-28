@@ -9,6 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,400&display=swap" rel="stylesheet">
 <style>
 
+
+.tab-auth-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.tab-auth-btn.active {
+  background: var(--accent) !important;
+  border: 1.5px solid var(--border-dark) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
 /* ========================================================
    FULL SCREEN & WIDESCREEN RESPONSIVE GRID LAYOUTS
    ======================================================== */
@@ -1293,10 +1310,14 @@ canvas#trendCanvas {
     </ul>
 
     
-    <div class="nav-actions">
+    <div class="nav-actions" style="display:flex; align-items:center; gap:0.6rem;">
       <div class="chip" style="background:var(--accent); border:1px solid var(--border-dark); font-weight:700; color:var(--text-primary); padding:0.4rem 0.9rem;">
-        <span>🎓 Mahasiswa Indonesia</span>
+        <span>🎓 <span id="navUserName">Aisyah Putri</span></span>
       </div>
+      <button class="btn btn-sm btn-secondary" onclick="handleLogout()" style="font-size:0.75rem; padding:0.35rem 0.8rem;" title="Keluar dari akun">
+        🚪 Keluar
+      </button>
+    </div>
     </div>
   </div>
 </nav>
@@ -1335,134 +1356,187 @@ canvas#trendCanvas {
 <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
 <!-- ========================================================
-     HALAMAN 1: DAFTAR & ONBOARDING
+     HALAMAN 1: MASUK (LOGIN) & PENDAFTARAN MAHASISWA
      ======================================================== -->
 <div class="page active" id="page-onboarding">
   <div class="container" style="max-width: 860px;">
     
-    <div class="text-center" style="margin-top: 1rem; margin-bottom: 1.5rem;">
-      <div style="display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; background:var(--accent); border-radius:12px; margin-bottom:0.75rem; box-shadow:var(--shadow-card);">
+    <div class="text-center" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+      <div style="display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; background:var(--accent); border-radius:12px; margin-bottom:0.75rem; border:1px solid var(--border); box-shadow:var(--shadow-card);">
         <span style="font-family:var(--font-heading); font-weight:700; font-size:1.5rem; color:var(--accent-text);">L</span>
       </div>
-      <h1>Mulai di LingoTrack</h1>
-      <p class="text-secondary text-sm mt-sm">Pelacak kecakapan bahasa Inggris adaptif yang dirancang khusus untuk mahasiswa Indonesia.</p>
+      <h1>Portal Mahasiswa LingoTrack</h1>
+      <p class="text-secondary text-sm mt-sm">Platform pelacak kecakapan bahasa Inggris adaptif untuk mahasiswa Indonesia.</p>
     </div>
 
-    <!-- Step indicator -->
-    <div class="step-indicator" id="onboardSteps">
-      <div class="step-dot active"></div>
-      <div class="step-dot"></div>
-      <div class="step-dot"></div>
-      <div class="step-dot"></div>
+    <!-- Tab Pilihan: Masuk (Login) vs Daftar Baru -->
+    <div style="display:flex; justify-content:center; gap:0.6rem; margin-bottom:1.5rem;">
+      <button class="tab-auth-btn active" id="tabAuthLoginBtn" onclick="switchAuthTab('login')">
+        🔑 Masuk (Sudah Punya Akun)
+      </button>
+      <button class="tab-auth-btn" id="tabAuthRegisterBtn" onclick="switchAuthTab('register')" style="background:#FFFFFF; border:1px solid var(--border); color:var(--text-secondary);">
+        ✨ Daftar & Orientasi Baru
+      </button>
     </div>
 
-    <!-- Langkah 1: Profil Mahasiswa -->
-    <div class="onboarding-step active" data-step="1">
-      <div class="card">
-        <h3>1. Profil Mahasiswa</h3>
-        <p class="text-secondary text-sm mt-sm">Data identitas akademik untuk personalisasi latihan.</p>
-        
-        <div class="form-group mt-md">
-          <label class="form-label" for="obName">Nama Lengkap</label>
-          <input type="text" class="form-input" id="obName" placeholder="Contoh: Aisyah Putri Ramadhani" value="Aisyah Putri Ramadhani">
-        </div>
+    <!-- ================= VIEW A: FORM LOGIN MAHASISWA ================= -->
+    <div id="authLoginView">
+      <div class="card" style="max-width: 540px; margin: 0 auto;">
+        <h3>Masuk ke Akun Anda</h3>
+        <p class="text-secondary text-sm mt-sm">Gunakan email institusi (.ac.id) atau akun yang telah terdaftar.</p>
 
-        <div class="form-group">
-          <label class="form-label" for="obEmail">Email Institusi (.ac.id)</label>
-          <input type="email" class="form-input" id="obEmail" placeholder="nama@kampus.ac.id" value="aisyah.putri@ui.ac.id">
-          <div class="form-hint">Email kampus digunakan untuk validasi program mahasiswa.</div>
-        </div>
+        <form id="loginForm" onsubmit="handleLoginSubmit(event)" style="margin-top: 1.15rem;">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Institusi (.ac.id) / NIM</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="nama@kampus.ac.id" value="aisyah.putri@ui.ac.id" required>
+            <div class="form-hint">Contoh: aisyah.putri@ui.ac.id atau nama@ugm.ac.id</div>
+          </div>
 
-        <button class="btn btn-primary btn-block mt-md" onclick="nextOnboardStep(2)">Lanjutkan →</button>
-      </div>
-    </div>
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Kata Sandi</label>
+            <input type="password" class="form-input" id="loginPassword" value="lingotrack2026" required>
+            <div class="form-hint">Kata sandi akun akademik Anda.</div>
+          </div>
 
-    <!-- Langkah 2: Jurusan Akademik -->
-    <div class="onboarding-step hidden" data-step="2">
-      <div class="card">
-        <h3>2. Program Studi</h3>
-        <p class="text-secondary text-sm mt-sm">Pilih bidang studi agar topik kosakata relevan dengan konteks kuliah Anda.</p>
+          <div class="flex-between mb-md">
+            <label style="display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--accent-hover);"> Ingat saya di perangkat ini
+            </label>
+            <a href="#" onclick="showToast('Tautan reset kata sandi dikirim ke email kampus Anda.', 'info'); return false;" style="font-size:0.82rem; color:var(--text-secondary); text-decoration:none;">Lupa sandi?</a>
+          </div>
 
-        <div class="form-group mt-md">
-          <label class="form-label" for="obMajor">Fakultas / Program Studi</label>
-          <select class="form-select" id="obMajor">
-            <option value="Teknik Informatika" selected>Teknik Informatika & Ilmu Komputer</option>
-            <option value="Sistem Informasi">Sistem Informasi</option>
-            <option value="Hubungan Internasional">Hubungan Internasional & FISIP</option>
-            <option value="Manajemen & Bisnis">Manajemen & Ekonomi Bisnis</option>
-            <option value="Ilmu Hukum">Ilmu Hukum</option>
-            <option value="Kedokteran & Kesehatan">Kedokteran & Ilmu Kesehatan</option>
-            <option value="Sastra Inggris">Sastra Inggris & Linguistik</option>
-            <option value="Psikologi">Psikologi</option>
-            <option value="Teknik Sipil & Mesin">Teknik Sipil & Mesin</option>
-            <option value="Lainnya">Bidang Studi Lainnya</option>
-          </select>
-        </div>
+          <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">
+            Masuk ke Dasbor LingoTrack →
+          </button>
+        </form>
 
-        <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
-          <button class="btn btn-secondary" onclick="nextOnboardStep(1)">Kembali</button>
-          <button class="btn btn-primary" style="flex:1;" onclick="nextOnboardStep(3)">Lanjutkan →</button>
+        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); text-align: center;">
+          <p class="text-xs text-secondary mb-sm">Akses cepat pengujian:</p>
+          <button type="button" class="btn btn-secondary btn-block btn-sm" onclick="quickDemoLogin()">
+            ⚡ Masuk Otomatis (Akun Demo: Aisyah Putri - UI)
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Langkah 3: Target Ujian & Skor -->
-    <div class="onboarding-step hidden" data-step="3">
-      <div class="card">
-        <h3>3. Target Sertifikasi</h3>
-        <p class="text-secondary text-sm mt-sm">Tentukan sertifikasi yang ingin Anda kejar untuk syarat kelulusan atau beasiswa.</p>
+    <!-- ================= VIEW B: WIZARD PENDAFTARAN & ONBOARDING 4 LANGKAH ================= -->
+    <div id="authRegisterView" class="hidden">
+      <!-- Step indicator -->
+      <div class="step-indicator" id="onboardSteps">
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+      </div>
 
-        <div class="form-group mt-md">
-          <label class="form-label" for="obTestType">Jenis Ujian Kemampuan</label>
-          <select class="form-select" id="obTestType" onchange="updateScorePlaceholder()">
-            <option value="TOEFL iBT" selected>TOEFL iBT (Internet-based)</option>
-            <option value="IELTS Academic">IELTS Academic</option>
-            <option value="TOEFL ITP">TOEFL ITP (Paper-based)</option>
-          </select>
-        </div>
+      <!-- Langkah 1: Profil Mahasiswa -->
+      <div class="onboarding-step" data-step="1">
+        <div class="card" style="max-width: 580px; margin: 0 auto;">
+          <h3>1. Profil Mahasiswa</h3>
+          <p class="text-secondary text-sm mt-sm">Data identitas akademik untuk personalisasi modul latihan.</p>
+          
+          <div class="form-group mt-md">
+            <label class="form-label" for="obName">Nama Lengkap</label>
+            <input type="text" class="form-input" id="obName" placeholder="Contoh: Aisyah Putri Ramadhani" value="Aisyah Putri Ramadhani">
+          </div>
 
-        <div class="form-group">
-          <label class="form-label" for="obTargetScore">Target Skor</label>
-          <input type="number" class="form-input" id="obTargetScore" value="95" min="0" max="120">
-          <div class="form-hint" id="scoreHint">Skala skor TOEFL iBT: 0–120 (Rekomendasi beasiswa LPDP/AAS: ≥ 85–90)</div>
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="obEmail">Email Institusi (.ac.id)</label>
+            <input type="email" class="form-input" id="obEmail" placeholder="nama@kampus.ac.id" value="aisyah.putri@ui.ac.id">
+            <div class="form-hint">Email kampus digunakan untuk validasi program mahasiswa.</div>
+          </div>
 
-        <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
-          <button class="btn btn-secondary" onclick="nextOnboardStep(2)">Kembali</button>
-          <button class="btn btn-primary" style="flex:1;" onclick="nextOnboardStep(4)">Lanjutkan →</button>
+          <button class="btn btn-primary btn-block mt-md" onclick="nextOnboardStep(2)">Lanjutkan ke Pilihan Jurusan →</button>
         </div>
       </div>
-    </div>
 
-    <!-- Langkah 4: Waktu Belajar Harian -->
-    <div class="onboarding-step hidden" data-step="4">
-      <div class="card">
-        <h3>4. Preferensi Belajar Harian</h3>
-        <p class="text-secondary text-sm mt-sm">Komitmen kecil harian menghasilkan kemajuan kecakapan yang bertahan lama.</p>
+      <!-- Langkah 2: Jurusan Akademik -->
+      <div class="onboarding-step hidden" data-step="2">
+        <div class="card" style="max-width: 580px; margin: 0 auto;">
+          <h3>2. Program Studi</h3>
+          <p class="text-secondary text-sm mt-sm">Pilih bidang studi agar topik kosakata relevan dengan konteks kuliah Anda.</p>
 
-        <div class="form-group mt-md">
-          <label class="form-label" for="obStudyTime">Jadwal Belajar Favorit</label>
-          <select class="form-select" id="obStudyTime">
-            <option value="Pagi (06:00 – 08:30)" selected>Pagi hari sebelum kuliah (06:00 – 08:30)</option>
-            <option value="Siang (12:00 – 13:30)">Jeda istirahat siang (12:00 – 13:30)</option>
-            <option value="Sore (16:30 – 18:00)">Sore setelah kuliah (16:30 – 18:00)</option>
-            <option value="Malam (20:00 – 21:30)">Malam saat santai (20:00 – 21:30)</option>
-          </select>
+          <div class="form-group mt-md">
+            <label class="form-label" for="obMajor">Fakultas / Program Studi</label>
+            <select class="form-select" id="obMajor">
+              <option value="Teknik Informatika" selected>Teknik Informatika & Ilmu Komputer</option>
+              <option value="Sistem Informasi">Sistem Informasi</option>
+              <option value="Hubungan Internasional">Hubungan Internasional & FISIP</option>
+              <option value="Manajemen & Bisnis">Manajemen & Ekonomi Bisnis</option>
+              <option value="Ilmu Hukum">Ilmu Hukum</option>
+              <option value="Kedokteran & Kesehatan">Kedokteran & Ilmu Kesehatan</option>
+              <option value="Sastra Inggris">Sastra Inggris & Linguistik</option>
+              <option value="Psikologi">Psikologi</option>
+              <option value="Teknik Sipil & Mesin">Teknik Sipil & Mesin</option>
+              <option value="Lainnya">Bidang Studi Lainnya</option>
+            </select>
+          </div>
+
+          <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
+            <button class="btn btn-secondary" onclick="nextOnboardStep(1)">Kembali</button>
+            <button class="btn btn-primary" style="flex:1;" onclick="nextOnboardStep(3)">Lanjutkan →</button>
+          </div>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="form-label" for="obDuration">Target Durasi Per Hari</label>
-          <select class="form-select" id="obDuration">
-            <option value="15 menit">15 menit (Mikro-latihan kilat)</option>
-            <option value="30 menit" selected>30 menit (Standar rekomendasi)</option>
-            <option value="45 menit">45 menit (Intensif)</option>
-            <option value="60 menit">60 menit (Persiapan ujian cepat)</option>
-          </select>
+      <!-- Langkah 3: Target Ujian & Skor -->
+      <div class="onboarding-step hidden" data-step="3">
+        <div class="card" style="max-width: 580px; margin: 0 auto;">
+          <h3>3. Target Sertifikasi</h3>
+          <p class="text-secondary text-sm mt-sm">Tentukan sertifikasi yang ingin Anda kejar untuk syarat kelulusan atau beasiswa.</p>
+
+          <div class="form-group mt-md">
+            <label class="form-label" for="obTestType">Jenis Ujian Kemampuan</label>
+            <select class="form-select" id="obTestType" onchange="updateScorePlaceholder()">
+              <option value="TOEFL iBT" selected>TOEFL iBT (Internet-based)</option>
+              <option value="IELTS Academic">IELTS Academic</option>
+              <option value="TOEFL ITP">TOEFL ITP (Paper-based)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="obTargetScore">Target Skor</label>
+            <input type="number" class="form-input" id="obTargetScore" value="95" min="0" max="120">
+            <div class="form-hint" id="scoreHint">Skala skor TOEFL iBT: 0–120 (Rekomendasi beasiswa LPDP/AAS: ≥ 85–90)</div>
+          </div>
+
+          <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
+            <button class="btn btn-secondary" onclick="nextOnboardStep(2)">Kembali</button>
+            <button class="btn btn-primary" style="flex:1;" onclick="nextOnboardStep(4)">Lanjutkan →</button>
+          </div>
         </div>
+      </div>
 
-        <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
-          <button class="btn btn-secondary" onclick="nextOnboardStep(3)">Kembali</button>
-          <button class="btn btn-primary" style="flex:1;" onclick="finishOnboarding()">Ikuti Tes Penempatan Adaptif →</button>
+      <!-- Langkah 4: Waktu Belajar Harian -->
+      <div class="onboarding-step hidden" data-step="4">
+        <div class="card" style="max-width: 580px; margin: 0 auto;">
+          <h3>4. Preferensi Belajar Harian</h3>
+          <p class="text-secondary text-sm mt-sm">Komitmen kecil harian menghasilkan kemajuan kecakapan yang bertahan lama.</p>
+
+          <div class="form-group mt-md">
+            <label class="form-label" for="obStudyTime">Jadwal Belajar Favorit</label>
+            <select class="form-select" id="obStudyTime">
+              <option value="Pagi (06:00 – 08:30)" selected>Pagi hari sebelum kuliah (06:00 – 08:30)</option>
+              <option value="Siang (12:00 – 13:30)">Jeda istirahat siang (12:00 – 13:30)</option>
+              <option value="Sore (16:30 – 18:00)">Sore setelah kuliah (16:30 – 18:00)</option>
+              <option value="Malam (20:00 – 21:30)">Malam saat santai (20:00 – 21:30)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="obDuration">Target Durasi Per Hari</label>
+            <select class="form-select" id="obDuration">
+              <option value="15 menit">15 menit (Mikro-latihan kilat)</option>
+              <option value="30 menit" selected>30 menit (Standar rekomendasi)</option>
+              <option value="45 menit">45 menit (Intensif)</option>
+              <option value="60 menit">60 menit (Persiapan ujian cepat)</option>
+            </select>
+          </div>
+
+          <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
+            <button class="btn btn-secondary" onclick="nextOnboardStep(3)">Kembali</button>
+            <button class="btn btn-primary" style="flex:1;" onclick="finishOnboarding()">Ikuti Tes Penempatan Adaptif →</button>
+          </div>
         </div>
       </div>
     </div>
@@ -2302,7 +2376,86 @@ function initTheme() {
 function toggleTheme() {
   state.theme = 'light';
   document.documentElement.setAttribute('data-theme', 'light');
-});
+}
+
+
+/* ========================================================
+   FUNGSI AUTENTIKASI: LOGIN & TAB SWITCHING
+   ======================================================== */
+function switchAuthTab(tab) {
+  const loginView = document.getElementById('authLoginView');
+  const registerView = document.getElementById('authRegisterView');
+  const loginBtn = document.getElementById('tabAuthLoginBtn');
+  const registerBtn = document.getElementById('tabAuthRegisterBtn');
+
+  if (tab === 'login') {
+    if (loginView) loginView.classList.remove('hidden');
+    if (registerView) registerView.classList.add('hidden');
+    if (loginBtn) {
+      loginBtn.classList.add('active');
+      loginBtn.style.background = 'var(--accent)';
+      loginBtn.style.color = 'var(--text-primary)';
+    }
+    if (registerBtn) {
+      registerBtn.classList.remove('active');
+      registerBtn.style.background = '#FFFFFF';
+      registerBtn.style.color = 'var(--text-secondary)';
+    }
+  } else {
+    if (loginView) loginView.classList.add('hidden');
+    if (registerView) registerView.classList.remove('hidden');
+    if (registerBtn) {
+      registerBtn.classList.add('active');
+      registerBtn.style.background = 'var(--accent)';
+      registerBtn.style.color = 'var(--text-primary)';
+    }
+    if (loginBtn) {
+      loginBtn.classList.remove('active');
+      loginBtn.style.background = '#FFFFFF';
+      loginBtn.style.color = 'var(--text-secondary)';
+    }
+    nextOnboardStep(1);
+  }
+}
+
+function handleLoginSubmit(event) {
+  if (event) event.preventDefault();
+  const emailInput = document.getElementById('loginEmail');
+  const emailVal = emailInput ? emailInput.value.trim() : '';
+
+  if (!emailVal) {
+    showToast('Silakan masukkan email kampus Anda.', 'warning');
+    return;
+  }
+
+  // Set user state
+  state.user.email = emailVal;
+  if (emailVal.includes('aisyah')) {
+    state.user.name = 'Aisyah Putri Ramadhani';
+    state.user.major = 'Teknik Informatika';
+  } else {
+    const rawName = emailVal.split('@')[0].replace('.', ' ');
+    state.user.name = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+  }
+
+  showToast('✓ Berhasil masuk! Membuka dasbor LingoTrack...', 'success');
+  setTimeout(() => {
+    goToPage('dashboard');
+  }, 400);
+}
+
+function quickDemoLogin() {
+  state.user.name = 'Aisyah Putri Ramadhani';
+  state.user.email = 'aisyah.putri@ui.ac.id';
+  state.user.major = 'Teknik Informatika';
+  showToast('✓ Masuk sebagai Akun Demo (Aisyah Putri)', 'success');
+  goToPage('dashboard');
+}
+
+function handleLogout() {
+  showToast('Anda telah keluar dari akun.', 'info');
+  goToPage('onboarding');
+  switchAuthTab('login');
 }
 
 /* ========================================================
